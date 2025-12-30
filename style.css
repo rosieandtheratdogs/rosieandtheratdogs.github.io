@@ -1,20 +1,19 @@
 /* =========================================
-   ROSIE & THE RATDOGS — FINAL LOCK
+   ROSIE & THE RATDOGS — CLEAN FINAL CSS
    ========================================= */
 
 :root{
   --bg:#070707;
   --fg:#f2f2f2;
   --muted:rgba(242,242,242,.68);
-  --hair:rgba(242,242,242,.12);
+
+  --red:#dc2626;
 
   --max:1120px;
-  --r:22px;
+  --radius:22px;
 
   --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   --sans: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-
-  --ease:cubic-bezier(.2,.9,.2,1);
 }
 
 *{ box-sizing:border-box; }
@@ -29,20 +28,23 @@ body{
   overflow-x:hidden;
 }
 
-/* Ambient depth */
+/* subtle depth so black isn’t flat */
 body::before{
   content:"";
   position:fixed;
   inset:0;
   pointer-events:none;
   background:
-    radial-gradient(1200px 700px at 18% 10%, rgba(255,255,255,.08), transparent 55%),
-    radial-gradient(900px 600px at 88% 82%, rgba(255,255,255,.06), transparent 60%),
-    radial-gradient(1200px 900px at 50% 50%, transparent 40%, rgba(0,0,0,.78) 100%);
+    radial-gradient(1200px 700px at 20% 10%, rgba(255,255,255,.07), transparent 55%),
+    radial-gradient(900px 600px at 85% 80%, rgba(255,255,255,.05), transparent 60%),
+    radial-gradient(1200px 900px at 50% 50%, transparent 40%, rgba(0,0,0,.85) 100%);
   opacity:.55;
 }
 
-/* Layout */
+/* =========================================
+   LAYOUT
+   ========================================= */
+
 .wrap{
   min-height:100%;
   display:flex;
@@ -52,7 +54,7 @@ body::before{
 }
 
 /* =========================================
-   HERO
+   HERO (REAL RED BORDER)
    ========================================= */
 
 .hero{
@@ -61,20 +63,19 @@ body::before{
 
   position:relative;
   overflow:hidden;
-  border-radius:var(--r);
 
-  /* Framed border */
-  border:2px solid rgba(255,255,255,.28);
+  border-radius:var(--radius);
 
-  box-shadow:
-    inset 0 0 0 1px rgba(255,255,255,.12),
-    0 26px 90px rgba(0,0,0,.65);
+  /* THIS IS THE BORDER YOU WANT */
+  border:3px solid var(--red);
+
+  box-shadow:0 30px 90px rgba(0,0,0,.7);
 
   background:
     linear-gradient(
       180deg,
-      rgba(0,0,0,.40) 0%,
-      rgba(0,0,0,.65) 55%,
+      rgba(0,0,0,.38) 0%,
+      rgba(0,0,0,.62) 55%,
       rgba(0,0,0,.82) 100%
     ),
     url("asset/img/PXL_20250711_231216420.jpg");
@@ -89,17 +90,17 @@ body::before{
   padding:clamp(26px, 4.5vw, 64px);
 }
 
-/* Noise */
+/* film grain */
 .noise{
   position:absolute;
   inset:-30%;
   pointer-events:none;
   opacity:.14;
   transform:rotate(8deg);
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
 }
 
-/* Keep content above overlays */
+/* keep content above overlays */
 .hero > *{
   position:relative;
   z-index:1;
@@ -137,7 +138,7 @@ body::before{
 .nav{
   display:flex;
   flex-wrap:wrap;
-  gap:10px;
+  gap:12px;
 }
 
 .btn{
@@ -145,10 +146,11 @@ body::before{
   align-items:center;
   gap:12px;
 
-  padding:16px 22px;
+  padding:16px 24px;
   border-radius:999px;
-  border:1px solid rgba(255,255,255,.22);
-  background:rgba(0,0,0,.40);
+
+  border:1px solid rgba(255,255,255,.28);
+  background:rgba(0,0,0,.45);
 
   font-family:var(--mono);
   font-size:13px;
@@ -160,9 +162,9 @@ body::before{
   text-decoration:none;
 
   transition:
-    transform 120ms steps(2, end),
-    border-color 140ms cubic-bezier(.2,.9,.2,1),
-    background 140ms cubic-bezier(.2,.9,.2,1);
+    transform 120ms cubic-bezier(.2,.9,.2,1),
+    background 140ms cubic-bezier(.2,.9,.2,1),
+    border-color 140ms cubic-bezier(.2,.9,.2,1);
 }
 
 .btn::after{
@@ -172,17 +174,17 @@ body::before{
 
 .btn:hover{
   transform:translateY(-2px);
-  border-color:rgba(255,255,255,.55);
-  background:rgba(255,255,255,.07);
+  border-color:rgba(255,255,255,.6);
+  background:rgba(255,255,255,.08);
 }
 
 .btn.primary{
-  background:rgba(255,255,255,.12);
-  border-color:rgba(255,255,255,.55);
+  background:rgba(255,255,255,.14);
+  border-color:rgba(255,255,255,.6);
 }
 
 /* =========================================
-   FLOATING INSTAGRAM ICON (SMALL)
+   FLOATING INSTAGRAM (SMALL)
    ========================================= */
 
 .float-icon{
@@ -199,15 +201,11 @@ body::before{
   justify-content:center;
 
   border-radius:12px;
-  border:1px solid rgba(255,255,255,.18);
 
   box-shadow:0 10px 28px rgba(0,0,0,.55);
-
-  transition:
-    transform 180ms cubic-bezier(.2,.9,.2,1),
-    box-shadow 180ms cubic-bezier(.2,.9,.2,1);
 }
 
+/* Instagram brand */
 .float-icon.instagram{
   background:linear-gradient(
     135deg,
@@ -225,6 +223,7 @@ body::before{
   fill:#fff;
 }
 
+/* subtle motion */
 @keyframes floaty{
   0%,100%{ transform:translateY(0); }
   50%{ transform:translateY(-3px); }
@@ -237,7 +236,6 @@ body::before{
 .float-icon.instagram:hover{
   animation:none;
   transform:translateY(-4px) scale(1.05);
-  box-shadow:0 18px 45px rgba(0,0,0,.75);
 }
 
 /* =========================================
@@ -248,6 +246,7 @@ body::before{
   .hero{
     min-height:86vh;
     padding:22px;
+    border-width:2px;
   }
 
   .title{
@@ -262,10 +261,6 @@ body::before{
   .btn{
     width:100%;
     justify-content:space-between;
-  }
-
-  .noise{
-    opacity:.10;
   }
 
   .float-icon{
