@@ -247,6 +247,9 @@ body::before{
 }
 
 
+.hero{
+  outline: 3px solid red;
+}
 
 
 
