@@ -1,7 +1,6 @@
 /* =========================================
    ROSIE & THE RATDOGS
    FORMAT-FIRST + DIM HERO BACKGROUND
-   Static HTML / No frameworks
    ========================================= */
 
 :root{
@@ -45,10 +44,7 @@ body::before{
   opacity:.65;
 }
 
-/* =========================================
-   LAYOUT
-   ========================================= */
-
+/* Layout */
 .wrap{
   min-height:100%;
   display:flex;
@@ -57,10 +53,7 @@ body::before{
   padding:clamp(18px, 4vw, 56px);
 }
 
-/* =========================================
-   CARD (original format feel)
-   ========================================= */
-
+/* Card */
 .card{
   width:min(var(--max), 100%);
   position:relative;
@@ -91,10 +84,7 @@ body::before{
   padding:clamp(26px, 4.2vw, 56px);
 }
 
-/* =========================================
-   HERO BACKGROUND (VERY DIM)
-   ========================================= */
-
+/* HERO BACKGROUND (VERY DIM) */
 .card.hero{
   background:
     linear-gradient(
@@ -109,7 +99,7 @@ body::before{
   background-repeat:no-repeat;
 }
 
-/* Subtle grain */
+/* Grain */
 .card.hero::after{
   content:"";
   position:absolute;
@@ -120,10 +110,7 @@ body::before{
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
 }
 
-/* =========================================
-   TYPE
-   ========================================= */
-
+/* Type */
 .kicker{
   font-family:var(--mono);
   text-transform:uppercase;
@@ -168,10 +155,7 @@ body::before{
   margin:22px 0;
 }
 
-/* =========================================
-   NAV BUTTONS
-   ========================================= */
-
+/* Nav */
 .nav{
   display:flex;
   flex-wrap:wrap;
@@ -203,10 +187,7 @@ body::before{
     background var(--t) var(--ease);
 }
 
-.btn::after{
-  content:"→";
-  opacity:.75;
-}
+.btn::after{ content:"→"; opacity:.75; }
 
 .btn:hover{
   transform:translateY(-1px);
@@ -219,10 +200,7 @@ body::before{
   border-color:rgba(255,255,255,.45);
 }
 
-/* =========================================
-   FLOATING SOCIAL ICON (Callous Daoboys–style)
-   ========================================= */
-
+/* Floating social icon */
 .float-icon{
   position:fixed;
   right:18px;
@@ -260,10 +238,7 @@ body::before{
   background:rgba(255,255,255,.10);
 }
 
-/* =========================================
-   MOBILE
-   ========================================= */
-
+/* Mobile */
 @media (max-width:520px){
   .nav{ flex-direction:column; }
   .btn{ width:100%; justify-content:space-between; }
@@ -274,6 +249,10 @@ body::before{
     height:50px;
   }
 }
+
+
+
+
 
 
 
