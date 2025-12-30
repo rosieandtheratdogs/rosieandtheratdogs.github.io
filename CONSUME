@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>LISTEN — ROSIE & THE RATDOGS</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <h1 class="title">CONSUME</h1>
+      <p class="tagline">Bandcamp first. Everything else second.</p>
+
+      <p>
+        <a class="btn" href="https://yourbandname.bandcamp.com" target="_blank" rel="noopener">BANDCAMP</a>
+      </p>
+
+      <p><a class="btn" href="index.html">HOME</a></p>
+    </section>
+  </main>
+</body>
+</html>
