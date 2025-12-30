@@ -100,3 +100,12 @@ body{
   opacity:1;
   border-color: var(--dim);
 }
+
+
+
+body{
+  background-image: url("assets/img/PXL_20250711_231216420");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
