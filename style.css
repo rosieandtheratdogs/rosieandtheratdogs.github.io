@@ -1,6 +1,5 @@
 /* =========================================
-   ROSIE & THE RATDOGS — FINAL CLEAN STYLES
-   Hero header base + mean buttons + IG float
+   ROSIE & THE RATDOGS — FINAL LOCK
    ========================================= */
 
 :root{
@@ -16,7 +15,6 @@
   --sans: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
 
   --ease:cubic-bezier(.2,.9,.2,1);
-  --t:180ms;
 }
 
 *{ box-sizing:border-box; }
@@ -65,12 +63,13 @@ body::before{
   overflow:hidden;
   border-radius:var(--r);
 
-  border:1px solid var(--hair);
-  box-shadow:
-    0 26px 90px rgba(0,0,0,.65),
-    inset 0 1px 0 rgba(255,255,255,.06);
+  /* Framed border */
+  border:2px solid rgba(255,255,255,.28);
 
-  /* Background: slightly more visible (hair brighter) */
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.12),
+    0 26px 90px rgba(0,0,0,.65);
+
   background:
     linear-gradient(
       180deg,
@@ -90,33 +89,7 @@ body::before{
   padding:clamp(26px, 4.5vw, 64px);
 }
 
-/* Red line / sheen + subtle pulse */
-@keyframes linePulse{
-  0%{ opacity:.10; }
-  40%{ opacity:.55; }
-  100%{ opacity:.45; }
-}
-
-.hero::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  pointer-events:none;
-
-  background:
-    linear-gradient(
-      90deg,
-      transparent 0 47%,
-      rgba(255,255,255,.04) 47% 53%,
-      transparent 53% 100%
-    ),
-    linear-gradient(180deg, rgba(0,0,0,.00), rgba(0,0,0,.45));
-
-  opacity:.45;
-  animation: linePulse 900ms cubic-bezier(.2,.9,.2,1) 1;
-}
-
-/* Noise layer */
+/* Noise */
 .noise{
   position:absolute;
   inset:-30%;
@@ -127,7 +100,10 @@ body::before{
 }
 
 /* Keep content above overlays */
-.hero > *{ position:relative; z-index:1; }
+.hero > *{
+  position:relative;
+  z-index:1;
+}
 
 /* =========================================
    TYPE
@@ -189,7 +165,10 @@ body::before{
     background 140ms cubic-bezier(.2,.9,.2,1);
 }
 
-.btn::after{ content:"→"; opacity:.85; }
+.btn::after{
+  content:"→";
+  opacity:.85;
+}
 
 .btn:hover{
   transform:translateY(-2px);
@@ -197,14 +176,13 @@ body::before{
   background:rgba(255,255,255,.07);
 }
 
-/* Primary button (Consume) */
 .btn.primary{
-  background: rgba(255,255,255,.12);
-  border-color: rgba(255,255,255,.55);
+  background:rgba(255,255,255,.12);
+  border-color:rgba(255,255,255,.55);
 }
 
 /* =========================================
-   FLOATING INSTAGRAM ICON
+   FLOATING INSTAGRAM ICON (SMALL)
    ========================================= */
 
 .float-icon{
@@ -213,25 +191,25 @@ body::before{
   bottom:18px;
   z-index:9999;
 
-  width:56px;
-  height:56px;
+  width:38px;
+  height:38px;
+
   display:inline-flex;
   align-items:center;
   justify-content:center;
 
-  border-radius:16px;
+  border-radius:12px;
   border:1px solid rgba(255,255,255,.18);
 
-  box-shadow:0 16px 45px rgba(0,0,0,.65);
+  box-shadow:0 10px 28px rgba(0,0,0,.55);
 
   transition:
     transform 180ms cubic-bezier(.2,.9,.2,1),
     box-shadow 180ms cubic-bezier(.2,.9,.2,1);
 }
 
-/* Recognizable IG gradient */
 .float-icon.instagram{
-  background: linear-gradient(
+  background:linear-gradient(
     135deg,
     #f58529,
     #feda77,
@@ -241,31 +219,29 @@ body::before{
   );
 }
 
-/* Icon */
 .float-icon.instagram svg{
-  width:24px;
-  height:24px;
+  width:18px;
+  height:18px;
   fill:#fff;
 }
 
-/* Gentle “alive” motion */
 @keyframes floaty{
-  0%,100%{ transform: translateY(0); }
-  50%{ transform: translateY(-3px); }
+  0%,100%{ transform:translateY(0); }
+  50%{ transform:translateY(-3px); }
 }
 
 .float-icon.instagram{
-  animation: floaty 2.8s ease-in-out infinite;
+  animation:floaty 2.8s ease-in-out infinite;
 }
 
 .float-icon.instagram:hover{
   animation:none;
   transform:translateY(-4px) scale(1.05);
-  box-shadow:0 22px 60px rgba(0,0,0,.75);
+  box-shadow:0 18px 45px rgba(0,0,0,.75);
 }
 
 /* =========================================
-   MOBILE POLISH
+   MOBILE
    ========================================= */
 
 @media (max-width:520px){
@@ -279,17 +255,29 @@ body::before{
     line-height:.9;
   }
 
-  .nav{ flex-direction:column; }
-  .btn{ width:100%; justify-content:space-between; }
+  .nav{
+    flex-direction:column;
+  }
 
-  .noise{ opacity:.10; }
-  .hero::before{ opacity:.35; }
+  .btn{
+    width:100%;
+    justify-content:space-between;
+  }
+
+  .noise{
+    opacity:.10;
+  }
 
   .float-icon{
     right:14px;
     bottom:14px;
-    width:52px;
-    height:52px;
-    border-radius:14px;
+    width:34px;
+    height:34px;
+    border-radius:10px;
+  }
+
+  .float-icon.instagram svg{
+    width:16px;
+    height:16px;
   }
 }
