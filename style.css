@@ -76,3 +76,27 @@ body{
 .btn:hover{
   border-color: rgba(255,255,255,.55);
 }
+
+
+
+.social-icons{
+  display:flex;
+  gap:14px;
+  margin-top: 20px;
+  font-family: var(--mono);
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: .2em;
+}
+
+.social-icons a{
+  opacity:.55;
+  text-decoration:none;
+  border-bottom: 1px solid transparent;
+  transition: opacity var(--t) var(--ease), border-color var(--t) var(--ease);
+}
+
+.social-icons a:hover{
+  opacity:1;
+  border-color: var(--dim);
+}
