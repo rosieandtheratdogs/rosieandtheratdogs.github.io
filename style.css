@@ -1,5 +1,5 @@
 /* =========================================
-   ROSIE & THE RATDOGS — HERO HEADER BASE
+   ROSIE & THE RATDOGS — FINAL LOCKED STYLES
    ========================================= */
 
 :root{
@@ -7,7 +7,6 @@
   --fg:#f2f2f2;
   --muted:rgba(242,242,242,.68);
   --hair:rgba(242,242,242,.12);
-  --dim:rgba(242,242,242,.18);
 
   --max:1120px;
   --r:22px;
@@ -31,7 +30,7 @@ body{
   overflow-x:hidden;
 }
 
-/* Subtle ambient lift so blacks aren’t flat */
+/* Ambient depth */
 body::before{
   content:"";
   position:fixed;
@@ -44,10 +43,7 @@ body::before{
   opacity:.55;
 }
 
-/* =========================================
-   LAYOUT
-   ========================================= */
-
+/* Layout */
 .wrap{
   min-height:100%;
   display:flex;
@@ -57,7 +53,7 @@ body::before{
 }
 
 /* =========================================
-   HERO (this is the base)
+   HERO
    ========================================= */
 
 .hero{
@@ -73,13 +69,12 @@ body::before{
     0 26px 90px rgba(0,0,0,.65),
     inset 0 1px 0 rgba(255,255,255,.06);
 
-  /* HERO BACKGROUND — SUPER DIM */
   background:
     linear-gradient(
       180deg,
-      rgba(0,0,0,.86) 0%,
-      rgba(0,0,0,.92) 55%,
-      rgba(0,0,0,.97) 100%
+      rgba(0,0,0,.45) 0%,
+      rgba(0,0,0,.65) 55%,
+      rgba(0,0,0,.82) 100%
     ),
     url("asset/img/PXL_20250711_231216420.jpg");
 
@@ -87,14 +82,12 @@ body::before{
   background-position:center;
   background-repeat:no-repeat;
 
-  /* content positioning */
   display:flex;
   flex-direction:column;
   justify-content:flex-end;
   padding:clamp(26px, 4.5vw, 64px);
 }
 
-/* Artifact sheen line + subtle depth */
 .hero::before{
   content:"";
   position:absolute;
@@ -103,10 +96,9 @@ body::before{
   background:
     linear-gradient(90deg, transparent 0 48%, rgba(255,255,255,.035) 48% 52%, transparent 52% 100%),
     linear-gradient(180deg, rgba(0,0,0,.00), rgba(0,0,0,.45));
-  opacity:.55;
+  opacity:.45;
 }
 
-/* Noise layer hook (you already have <div class="noise">) */
 .noise{
   position:absolute;
   inset:-30%;
@@ -116,11 +108,7 @@ body::before{
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
 }
 
-/* Ensure text sits above overlays */
-.hero > *{
-  position:relative;
-  z-index:1;
-}
+.hero > *{ position:relative; z-index:1; }
 
 /* =========================================
    TYPE
@@ -145,7 +133,7 @@ body::before{
 }
 
 /* =========================================
-   NAV + BUTTONS
+   NAV
    ========================================= */
 
 .nav{
@@ -179,10 +167,7 @@ body::before{
     background var(--t) var(--ease);
 }
 
-.btn::after{
-  content:"→";
-  opacity:.75;
-}
+.btn::after{ content:"→"; opacity:.75; }
 
 .btn:hover{
   transform:translateY(-1px);
@@ -191,17 +176,24 @@ body::before{
 }
 
 /* =========================================
-   FLOATING SOCIAL ICON
+   FLOATING ICON STACK
    ========================================= */
 
-.float-icon{
+.float-stack{
   position:fixed;
   right:18px;
   bottom:18px;
   z-index:9999;
 
-  width:54px;
-  height:54px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.float-icon{
+  width:52px;
+  height:52px;
+
   display:inline-flex;
   align-items:center;
   justify-content:center;
@@ -225,6 +217,16 @@ body::before{
   fill:rgba(242,242,242,.92);
 }
 
+/* Logo-specific treatment */
+.float-logo{
+  width:28px;
+  height:28px;
+  display:block;
+  background:#f2f2f2;
+  border-radius:50%;
+  padding:6px;
+}
+
 .float-icon:hover{
   transform:translateY(-2px);
   border-color:rgba(255,255,255,.55);
@@ -238,22 +240,6 @@ body::before{
 @media (max-width:520px){
   .nav{ flex-direction:column; }
   .btn{ width:100%; justify-content:space-between; }
-  .float-icon{
-    right:14px;
-    bottom:14px;
-    width:50px;
-    height:50px;
-  }
+  .float-stack{ right:14px; bottom:14px; }
+  .float-icon{ width:48px; height:48px; }
 }
-
-
-.hero{
-  outline: 3px solid red;
-}
-
-
-
-
-
-
-
