@@ -1,171 +1,175 @@
 /* =========================================
-   ROSIE & THE RATDOGS — CLEAN, HARD RESET
-   Static CSS / No frameworks
+   ROSIE & THE RATDOGS
+   FORMAT-FIRST + DIM HERO BACKGROUND
+   Static HTML / No frameworks
    ========================================= */
 
 :root{
-  --bg:#0b0b0b;
-  --fg:#f5f5f5;
-  --muted:#bdbdbd;
-  --accent:#ffffff;
-  --max:1100px;
+  --bg:#070707;
+  --fg:#f2f2f2;
+  --muted:rgba(242,242,242,.68);
+  --hair:rgba(242,242,242,.10);
+
+  --max:1120px;
+  --r:20px;
+
+  --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --sans: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+
+  --ease:cubic-bezier(.2,.9,.2,1);
+  --t:180ms;
 }
 
 *{ box-sizing:border-box; }
 html,body{ height:100%; }
+
 body{
   margin:0;
   background:var(--bg);
   color:var(--fg);
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-  letter-spacing: .02em;
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
 }
+
+/* Ambient darkness */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(1200px 700px at 18% 10%, rgba(255,255,255,.08), transparent 55%),
+    radial-gradient(900px 600px at 88% 82%, rgba(255,255,255,.06), transparent 60%),
+    radial-gradient(1200px 900px at 50% 50%, transparent 40%, rgba(0,0,0,.78) 100%);
+  opacity:.65;
+}
+
+/* =========================================
+   LAYOUT
+   ========================================= */
 
 .wrap{
   min-height:100%;
   display:flex;
   align-items:center;
   justify-content:center;
-  padding:24px;
+  padding:clamp(18px, 4vw, 56px);
 }
-
-.hero{
-  width:min(var(--max), 100%);
-  padding:48px 24px;
-  border:1px solid rgba(255,255,255,.12);
-  border-radius:20px;
-  position:relative;
-  overflow:hidden;
-}
-
-.noise{
-  position:absolute;
-  inset:-30%;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.25'/%3E%3C/svg%3E");
-  transform: rotate(7deg);
-  pointer-events:none;
-}
-
-.title{
-  margin:0 0 8px;
-  font-size: clamp(44px, 7vw, 86px);
-  line-height: .95;
-  text-transform: uppercase;
-}
-
-.tagline{
-  margin:0 0 28px;
-  color:var(--muted);
-  font-size: clamp(14px, 2vw, 18px);
-  text-transform: uppercase;
-}
-
-.nav{
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
-}
-
-.btn{
-  display:inline-block;
-  padding:14px 18px;
-  border:1px solid rgba(255,255,255,.22);
-  border-radius:999px;
-  color:var(--fg);
-  text-decoration:none;
-  text-transform: uppercase;
-  font-weight:700;
-  letter-spacing:.08em;
-}
-
-.btn:hover{
-  border-color: rgba(255,255,255,.55);
-}
-
 
 /* =========================================
-   HERO / CARD
+   CARD (original format feel)
    ========================================= */
 
 .card{
-  width: min(var(--max), 100%);
-  border-radius: var(--r);
-  overflow:hidden;
+  width:min(var(--max), 100%);
   position:relative;
+  border-radius:var(--r);
+  overflow:hidden;
 
   border:1px solid var(--hair);
+  background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
   box-shadow:
-    0 30px 90px rgba(0,0,0,.65),
-    inset 0 1px 0 rgba(255,255,255,.06);
+    0 20px 70px rgba(0,0,0,.55),
+    inset 0 1px 0 rgba(255,255,255,.08);
 }
 
-/* HERO BACKGROUND — VERY DIM */
-.hero{
-  min-height: clamp(520px, 80vh, 900px);
-  display:flex;
-  align-items:flex-end;
-
-  background:
-    linear-gradient(
-      180deg,
-      rgba(0,0,0,.65) 0%,
-      rgba(0,0,0,.82) 55%,
-      rgba(0,0,0,.94) 100%
-    ),
-    url("asset/img/PXL_20250711_231216420.jpg");
-
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-/* Subtle grain on hero only */
-.hero::after{
+/* Artifact sheen */
+.card::before{
   content:"";
   position:absolute;
   inset:0;
   pointer-events:none;
-  opacity:.14;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+  background:
+    linear-gradient(90deg, transparent 0 48%, rgba(255,255,255,.035) 48% 52%, transparent 52% 100%),
+    linear-gradient(180deg, rgba(0,0,0,.00), rgba(0,0,0,.35));
+  opacity:.55;
 }
-
-/* =========================================
-   HERO CONTENT
-   ========================================= */
 
 .inner{
   position:relative;
-  padding: clamp(28px, 5vw, 68px);
+  padding:clamp(26px, 4.2vw, 56px);
+}
+
+/* =========================================
+   HERO BACKGROUND (VERY DIM)
+   ========================================= */
+
+.card.hero{
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0,0,0,.82) 0%,
+      rgba(0,0,0,.90) 55%,
+      rgba(0,0,0,.96) 100%
+    ),
+    url("asset/img/PXL_20250711_231216420.jpg");
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+}
+
+/* Subtle grain */
+.card.hero::after{
+  content:"";
+  position:absolute;
+  inset:-30%;
+  pointer-events:none;
+  opacity:.14;
+  transform:rotate(8deg);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+}
+
+/* =========================================
+   TYPE
+   ========================================= */
+
+.kicker{
+  font-family:var(--mono);
+  text-transform:uppercase;
+  letter-spacing:.22em;
+  font-size:12px;
+  color:var(--muted);
+  margin:0 0 12px;
+  display:inline-flex;
+  gap:10px;
+  align-items:center;
+}
+
+.kicker::before{
+  content:"";
+  width:18px;
+  height:1px;
+  background:rgba(242,242,242,.18);
 }
 
 .title{
   margin:0 0 10px;
-  text-transform: uppercase;
-  font-weight: 900;
-  font-size: clamp(48px, 8vw, 96px);
-  line-height:.9;
+  text-transform:uppercase;
+  font-weight:900;
+  line-height:.88;
   letter-spacing:-0.02em;
+  font-size:clamp(44px, 7vw, 92px);
 }
 
 .tagline{
   margin:0 0 26px;
-  font-family: var(--mono);
-  text-transform: uppercase;
-  letter-spacing:.22em;
-  font-size: 12px;
-  color: var(--muted);
+  font-family:var(--mono);
+  text-transform:uppercase;
+  letter-spacing:.18em;
+  font-size:12px;
+  color:var(--muted);
 }
 
 /* Divider */
 .rule{
   height:1px;
-  width:100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,.25), transparent);
-  margin: 22px 0 24px;
+  background:linear-gradient(90deg, transparent, rgba(255,255,255,.22), transparent);
+  margin:22px 0;
 }
 
 /* =========================================
-   NAVIGATION
+   NAV BUTTONS
    ========================================= */
 
 .nav{
@@ -174,24 +178,23 @@ body{
   gap:10px;
 }
 
-/* Buttons (nav only) */
 .btn{
   display:inline-flex;
   align-items:center;
   gap:10px;
 
-  padding: 12px 16px;
-  border-radius: 999px;
+  padding:13px 16px;
+  border-radius:999px;
   border:1px solid rgba(255,255,255,.22);
-  background: rgba(0,0,0,.35);
+  background:rgba(0,0,0,.35);
 
-  font-family: var(--mono);
-  font-size: 12px;
+  font-family:var(--mono);
+  font-size:12px;
   letter-spacing:.14em;
-  text-transform: uppercase;
-  font-weight: 800;
+  text-transform:uppercase;
+  font-weight:850;
 
-  color: var(--fg);
+  color:var(--fg);
   text-decoration:none;
 
   transition:
@@ -202,35 +205,42 @@ body{
 
 .btn::after{
   content:"→";
-  opacity:.7;
+  opacity:.75;
 }
 
 .btn:hover{
-  transform: translateY(-1px);
-  border-color: rgba(255,255,255,.55);
-  background: rgba(255,255,255,.06);
+  transform:translateY(-1px);
+  border-color:rgba(255,255,255,.55);
+  background:rgba(255,255,255,.06);
+}
+
+.btn.primary{
+  background:rgba(255,255,255,.10);
+  border-color:rgba(255,255,255,.45);
 }
 
 /* =========================================
-   SOCIAL ICONS (SVG ONLY — QUIET)
+   FLOATING SOCIAL ICON (Callous Daoboys–style)
    ========================================= */
 
-.social-icons{
-  display:flex;
-  gap:16px;
-  margin-top:26px;
-}
+.float-icon{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  z-index:9999;
 
-.social-icon{
-  width:44px;
-  height:44px;
+  width:54px;
+  height:54px;
   display:inline-flex;
   align-items:center;
   justify-content:center;
 
-  border:1px solid rgba(255,255,255,.18);
-  border-radius:50%;
-  background: rgba(0,0,0,.45);
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.22);
+  background:rgba(0,0,0,.55);
+  backdrop-filter:blur(6px);
+
+  box-shadow:0 14px 40px rgba(0,0,0,.55);
 
   transition:
     transform var(--t) var(--ease),
@@ -238,29 +248,33 @@ body{
     background var(--t) var(--ease);
 }
 
-.social-icon svg{
-  width:20px;
-  height:20px;
-  fill: rgba(242,242,242,.85);
+.float-icon svg{
+  width:22px;
+  height:22px;
+  fill:rgba(242,242,242,.92);
 }
 
-.social-icon:hover{
-  transform: translateY(-1px);
-  border-color: rgba(255,255,255,.55);
-  background: rgba(255,255,255,.10);
-}
-
-.social-icon:hover svg{
-  fill: #fff;
+.float-icon:hover{
+  transform:translateY(-2px);
+  border-color:rgba(255,255,255,.55);
+  background:rgba(255,255,255,.10);
 }
 
 /* =========================================
-   MOBILE TUNING
+   MOBILE
    ========================================= */
 
-@media (max-width: 520px){
+@media (max-width:520px){
   .nav{ flex-direction:column; }
   .btn{ width:100%; justify-content:space-between; }
+  .float-icon{
+    right:14px;
+    bottom:14px;
+    width:50px;
+    height:50px;
+  }
 }
+
+
 
 
