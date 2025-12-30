@@ -1,5 +1,6 @@
 /* =========================================
-   ROSIE & THE RATDOGS — FINAL LOCKED STYLES
+   ROSIE & THE RATDOGS — FINAL CLEAN STYLES
+   Hero header base + mean buttons + IG float
    ========================================= */
 
 :root{
@@ -69,10 +70,11 @@ body::before{
     0 26px 90px rgba(0,0,0,.65),
     inset 0 1px 0 rgba(255,255,255,.06);
 
+  /* Background: slightly more visible (hair brighter) */
   background:
     linear-gradient(
       180deg,
-      rgba(0,0,0,.45) 0%,
+      rgba(0,0,0,.40) 0%,
       rgba(0,0,0,.65) 55%,
       rgba(0,0,0,.82) 100%
     ),
@@ -88,17 +90,33 @@ body::before{
   padding:clamp(26px, 4.5vw, 64px);
 }
 
+/* Red line / sheen + subtle pulse */
+@keyframes linePulse{
+  0%{ opacity:.10; }
+  40%{ opacity:.55; }
+  100%{ opacity:.45; }
+}
+
 .hero::before{
   content:"";
   position:absolute;
   inset:0;
   pointer-events:none;
+
   background:
-    linear-gradient(90deg, transparent 0 48%, rgba(255,255,255,.035) 48% 52%, transparent 52% 100%),
+    linear-gradient(
+      90deg,
+      transparent 0 47%,
+      rgba(255,255,255,.04) 47% 53%,
+      transparent 53% 100%
+    ),
     linear-gradient(180deg, rgba(0,0,0,.00), rgba(0,0,0,.45));
+
   opacity:.45;
+  animation: linePulse 900ms cubic-bezier(.2,.9,.2,1) 1;
 }
 
+/* Noise layer */
 .noise{
   position:absolute;
   inset:-30%;
@@ -108,6 +126,7 @@ body::before{
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
 }
 
+/* Keep content above overlays */
 .hero > *{ position:relative; z-index:1; }
 
 /* =========================================
@@ -117,23 +136,26 @@ body::before{
 .title{
   margin:0 0 10px;
   text-transform:uppercase;
-  font-weight:900;
-  line-height:.88;
-  letter-spacing:-0.02em;
-  font-size:clamp(44px, 7vw, 92px);
+  font-weight:950;
+  line-height:.86;
+  letter-spacing:-0.03em;
+  font-size:clamp(46px, 7.2vw, 96px);
+  text-shadow:
+    0 2px 0 rgba(0,0,0,.35),
+    0 18px 55px rgba(0,0,0,.55);
 }
 
 .tagline{
-  margin:0 0 24px;
+  margin:0 0 26px;
   font-family:var(--mono);
   text-transform:uppercase;
   letter-spacing:.18em;
-  font-size:12px;
+  font-size:13px;
   color:var(--muted);
 }
 
 /* =========================================
-   NAV
+   NAV + BUTTONS
    ========================================= */
 
 .nav{
@@ -145,101 +167,129 @@ body::before{
 .btn{
   display:inline-flex;
   align-items:center;
-  gap:10px;
+  gap:12px;
 
-  padding:13px 16px;
+  padding:16px 22px;
   border-radius:999px;
   border:1px solid rgba(255,255,255,.22);
   background:rgba(0,0,0,.40);
 
   font-family:var(--mono);
-  font-size:12px;
-  letter-spacing:.14em;
+  font-size:13px;
+  letter-spacing:.16em;
   text-transform:uppercase;
-  font-weight:850;
+  font-weight:900;
 
   color:var(--fg);
   text-decoration:none;
 
   transition:
-    transform var(--t) var(--ease),
-    border-color var(--t) var(--ease),
-    background var(--t) var(--ease);
+    transform 120ms steps(2, end),
+    border-color 140ms cubic-bezier(.2,.9,.2,1),
+    background 140ms cubic-bezier(.2,.9,.2,1);
 }
 
-.btn::after{ content:"→"; opacity:.75; }
+.btn::after{ content:"→"; opacity:.85; }
 
 .btn:hover{
-  transform:translateY(-1px);
+  transform:translateY(-2px);
   border-color:rgba(255,255,255,.55);
   background:rgba(255,255,255,.07);
 }
 
+/* Primary button (Consume) */
+.btn.primary{
+  background: rgba(255,255,255,.12);
+  border-color: rgba(255,255,255,.55);
+}
+
 /* =========================================
-   FLOATING ICON STACK
+   FLOATING INSTAGRAM ICON
    ========================================= */
 
-.float-stack{
+.float-icon{
   position:fixed;
   right:18px;
   bottom:18px;
   z-index:9999;
 
-  display:flex;
-  flex-direction:column;
-  gap:12px;
-}
-
-.float-icon{
-  width:52px;
-  height:52px;
-
+  width:56px;
+  height:56px;
   display:inline-flex;
   align-items:center;
   justify-content:center;
 
-  border-radius:999px;
-  border:1px solid rgba(255,255,255,.22);
-  background:rgba(0,0,0,.60);
-  backdrop-filter:blur(6px);
+  border-radius:16px;
+  border:1px solid rgba(255,255,255,.18);
 
-  box-shadow:0 14px 40px rgba(0,0,0,.55);
+  box-shadow:0 16px 45px rgba(0,0,0,.65);
 
   transition:
-    transform var(--t) var(--ease),
-    border-color var(--t) var(--ease),
-    background var(--t) var(--ease);
+    transform 180ms cubic-bezier(.2,.9,.2,1),
+    box-shadow 180ms cubic-bezier(.2,.9,.2,1);
 }
 
-.float-icon svg{
-  width:22px;
-  height:22px;
-  fill:rgba(242,242,242,.92);
+/* Recognizable IG gradient */
+.float-icon.instagram{
+  background: linear-gradient(
+    135deg,
+    #f58529,
+    #feda77,
+    #dd2a7b,
+    #8134af,
+    #515bd4
+  );
 }
 
-/* Logo-specific treatment */
-.float-logo{
-  width:28px;
-  height:28px;
-  display:block;
-  background:#f2f2f2;
-  border-radius:50%;
-  padding:6px;
+/* Icon */
+.float-icon.instagram svg{
+  width:24px;
+  height:24px;
+  fill:#fff;
 }
 
-.float-icon:hover{
-  transform:translateY(-2px);
-  border-color:rgba(255,255,255,.55);
-  background:rgba(255,255,255,.10);
+/* Gentle “alive” motion */
+@keyframes floaty{
+  0%,100%{ transform: translateY(0); }
+  50%{ transform: translateY(-3px); }
+}
+
+.float-icon.instagram{
+  animation: floaty 2.8s ease-in-out infinite;
+}
+
+.float-icon.instagram:hover{
+  animation:none;
+  transform:translateY(-4px) scale(1.05);
+  box-shadow:0 22px 60px rgba(0,0,0,.75);
 }
 
 /* =========================================
-   MOBILE
+   MOBILE POLISH
    ========================================= */
 
 @media (max-width:520px){
+  .hero{
+    min-height:86vh;
+    padding:22px;
+  }
+
+  .title{
+    letter-spacing:-0.02em;
+    line-height:.9;
+  }
+
   .nav{ flex-direction:column; }
   .btn{ width:100%; justify-content:space-between; }
-  .float-stack{ right:14px; bottom:14px; }
-  .float-icon{ width:48px; height:48px; }
+
+  .noise{ opacity:.10; }
+  .hero::before{ opacity:.35; }
+
+  .float-icon{
+    right:14px;
+    bottom:14px;
+    width:52px;
+    height:52px;
+    border-radius:14px;
+  }
 }
