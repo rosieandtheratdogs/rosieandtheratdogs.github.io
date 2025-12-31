@@ -331,8 +331,3 @@ body::before{
     );
 }
 
-
-.simple-text.muted{
-  opacity:.7;
-  margin-top:6px;
-}
