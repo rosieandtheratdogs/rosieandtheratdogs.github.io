@@ -311,7 +311,7 @@ body::before{
 }
 /* Extra breathing room before EPK button on Contact page */
 .page-simple .simple-block + .simple-block{
-  margin-top: 36px;
+  margin-top: 56px;
 }
 
 .page-simple::before{
