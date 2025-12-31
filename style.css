@@ -358,4 +358,19 @@ body::before{
   }
 }
 
+/* Consume page hero image */
+.page-consume .hero{
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0,0,0,.45) 0%,
+      rgba(0,0,0,.70) 55%,
+      rgba(0,0,0,.90) 100%
+    ),
+    url("asset/img/consume-hero.png");
+
+  background-size: cover;
+  background-position: center;
+}
+
 
