@@ -314,3 +314,23 @@ body::before{
   margin-top: 36px;
 }
 
+.page-simple::before{
+  content:"";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: .08;
+
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      rgba(255,255,255,.04),
+      rgba(255,255,255,.04) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+}
+.simple-text.muted{
+  opacity:.7;
+  margin-top:6px;
+}
