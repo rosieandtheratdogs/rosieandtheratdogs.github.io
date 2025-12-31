@@ -8,10 +8,10 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 
-<body>
+<body class="page-consume">
   <main class="wrap" style="flex-direction:column; gap:18px; align-items:stretch;">
 
-    <!-- HERO (same layout as home page) -->
+    <!-- HERO (same structure + border as home) -->
     <header class="hero">
       <div class="noise" aria-hidden="true"></div>
 
@@ -25,8 +25,10 @@
       </nav>
     </header>
 
-    <!-- VIDEOS (horizontal row on desktop) -->
+    <!-- VIDEOS (horizontal on desktop) -->
     <section class="videos">
+
+      <!-- Video 1 (autoplay + muted) -->
       <div class="video-wrap">
         <iframe
           src="https://www.youtube.com/embed/GeIT7eNCc4I?autoplay=1&mute=1&playsinline=1"
@@ -37,6 +39,7 @@
         </iframe>
       </div>
 
+      <!-- Video 2 -->
       <div class="video-wrap">
         <iframe
           src="https://www.youtube.com/embed/pf6S9kix9Aw"
@@ -47,6 +50,7 @@
         </iframe>
       </div>
 
+      <!-- Video 3 -->
       <div class="video-wrap">
         <iframe
           src="https://www.youtube.com/embed/OUKdconbpag"
@@ -56,8 +60,8 @@
           allowfullscreen>
         </iframe>
       </div>
-    </section>
 
+    </section>
   </main>
 </body>
 </html>
