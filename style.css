@@ -336,3 +336,26 @@ body::before{
 
 }
 
+/* Consume page: horizontal video row */
+.videos{
+  width: min(1120px, 100%);
+  margin: 18px auto 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+/* Ensure each embed stays 16:9 */
+.videos .video-wrap{
+  margin: 0;                /* override vertical stacking margins */
+  aspect-ratio: 16 / 9;
+}
+
+/* Responsive: stack to 1 column on small screens */
+@media (max-width: 900px){
+  .videos{
+    grid-template-columns: 1fr;
+  }
+}
+
+
