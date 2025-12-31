@@ -370,7 +370,11 @@ body::before{
     url("asset/img/consume-hero.png");
 
   background-size: cover;
-  background-position: center;
+background-position: center 35%;
+
 }
+
+
+
 
 
